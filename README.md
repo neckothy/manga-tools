@@ -5,6 +5,7 @@ I'll probably add more stuff as I get around to rewriting them to be less bad (t
 
 Since I'm rewriting these out of a much worse, all-in-one script I normally use, they might not be extensively tested. Make backups of your files and use at your own risk. Use `--dry-run` where applicable.
 
+### Most of these expect to be run from within the directory containing your images.
 ---
 
 Some related sources which may have helped with portions of this repo:
