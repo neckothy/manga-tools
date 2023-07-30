@@ -42,6 +42,7 @@ def join_spreads():
         pool.map(join_spread, imgs_to_join)
 
 
-if not os.path.isdir("trash"):
-    os.mkdir("trash")
-join_spreads()
+if __name__ == "__main__":
+    if not os.path.isdir("trash"):
+        os.mkdir("trash")
+    join_spreads()

@@ -6,47 +6,6 @@ from PIL import Image
 import re
 import shutil
 
-parser = argparse.ArgumentParser()
-# common special pages (comma-split pages that should be tagged as x)
-# not implemented yet cuz I'm dumb & lazy
-# parser.add_argument("-aft", "--afterword", help="Afterword")
-# parser.add_argument("-cov", "--cover", help="Cover")
-# parser.add_argument("-ext", "--extra", help="Extra")
-# parser.add_argument("-toc", "--table-of-contents", help="ToC")
-# normal stuff
-parser.add_argument(
-    "-cn",
-    "--chapter-numbers",
-    help="comma-split chapter numbers, accepts ranges (1..5,5x1)",
-)
-parser.add_argument("-cp", "--chapter-pages", help="comma-split chapter starting pages")
-parser.add_argument(
-    "-ct", "--chapter-titles", help="TWO comma-split chapter titles (title,,title2)"
-)
-parser.add_argument(
-    "-d", "--dry-run", help="print output without renaming", action="store_true"
-)
-parser.add_argument("-p", "--publisher", help="publisher name")
-parser.add_argument("-r", "--ripper", help="ripper tag")
-parser.add_argument("-t", "--title", help="series title")
-parser.add_argument("-v", "--volume", help="volume number")
-parser.add_argument("-y", "--year", help="published year")
-parser.add_argument(
-    "-cpad",
-    "--chapter-padding",
-    help="zero padding of chapter number",
-    type=int,
-    default=3,
-)
-parser.add_argument(
-    "-vpad",
-    "--volume-padding",
-    help="zero padding of volume number",
-    type=int,
-    default=2,
-)
-args = parser.parse_args()
-
 
 def get_info():
     ripper = config.RIPPER_TAG if config.RIPPER_TAG != "" else None
@@ -155,5 +114,49 @@ def rename_pages(title, volume, year, ripper, publisher):
             shutil.move(img, new_name)
 
 
-book_info = get_info()
-rename_pages(*book_info)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    # common special pages (comma-split pages that should be tagged as x)
+    # not implemented yet cuz I'm dumb & lazy
+    # parser.add_argument("-aft", "--afterword", help="Afterword")
+    # parser.add_argument("-cov", "--cover", help="Cover")
+    # parser.add_argument("-ext", "--extra", help="Extra")
+    # parser.add_argument("-toc", "--table-of-contents", help="ToC")
+    # normal stuff
+    parser.add_argument(
+        "-cn",
+        "--chapter-numbers",
+        help="comma-split chapter numbers, accepts ranges (1..5,5x1)",
+    )
+    parser.add_argument(
+        "-cp", "--chapter-pages", help="comma-split chapter starting pages"
+    )
+    parser.add_argument(
+        "-ct", "--chapter-titles", help="TWO comma-split chapter titles (title,,title2)"
+    )
+    parser.add_argument(
+        "-d", "--dry-run", help="print output without renaming", action="store_true"
+    )
+    parser.add_argument("-p", "--publisher", help="publisher name")
+    parser.add_argument("-r", "--ripper", help="ripper tag")
+    parser.add_argument("-t", "--title", help="series title")
+    parser.add_argument("-v", "--volume", help="volume number")
+    parser.add_argument("-y", "--year", help="published year")
+    parser.add_argument(
+        "-cpad",
+        "--chapter-padding",
+        help="zero padding of chapter number",
+        type=int,
+        default=3,
+    )
+    parser.add_argument(
+        "-vpad",
+        "--volume-padding",
+        help="zero padding of volume number",
+        type=int,
+        default=2,
+    )
+    args = parser.parse_args()
+
+    book_info = get_info()
+    rename_pages(*book_info)

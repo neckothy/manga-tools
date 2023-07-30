@@ -5,23 +5,6 @@ import os
 import re
 import subprocess
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-r", "--ripper", help="ripper tag")
-parser.add_argument("-t", "--title", help="series title")
-parser.add_argument(
-    "-ts", "--timestamp", help="modified timestamp, defaults to current time"
-)
-parser.add_argument("-v", "--volume", help="volume number")
-parser.add_argument("-y", "--year", help="published year")
-parser.add_argument(
-    "-vpad",
-    "--volume-padding",
-    help="zero padding of volume number",
-    type=int,
-    default=2,
-)
-args = parser.parse_args()
-
 
 def get_info():
     ripper = config.RIPPER_TAG if config.RIPPER_TAG != "" else None
@@ -67,5 +50,23 @@ def zip_volume(title, volume, year, ripper):
     subprocess.run(["7z", "a", "-tzip", "-mtc=off", "-mx=0", archive_name, "./*"])
 
 
-book_info = get_info()
-zip_volume(*book_info)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-r", "--ripper", help="ripper tag")
+    parser.add_argument("-t", "--title", help="series title")
+    parser.add_argument(
+        "-ts", "--timestamp", help="modified timestamp, defaults to current time"
+    )
+    parser.add_argument("-v", "--volume", help="volume number")
+    parser.add_argument("-y", "--year", help="published year")
+    parser.add_argument(
+        "-vpad",
+        "--volume-padding",
+        help="zero padding of volume number",
+        type=int,
+        default=2,
+    )
+    args = parser.parse_args()
+
+    book_info = get_info()
+    zip_volume(*book_info)
