@@ -55,7 +55,7 @@ def get_info():
     if match:
         title, volume, year, ripper = match.groups()
     else:
-        title, volume, year, ripper = None, None, None, None
+        title, volume, year, ripper = None, None, None, ripper
     title = args.title or title
     volume = args.volume or volume
     year = args.year or year
@@ -68,7 +68,7 @@ def get_info():
         return info
     else:
         print(
-            "missing a required value:\ntitle: {title}\nyear: {year}\npublisher: {publisher}"
+            f"missing a required value:\ntitle: {title}\nyear: {year}\npublisher: {publisher}"
         )
         exit()
 
