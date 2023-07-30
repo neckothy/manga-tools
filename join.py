@@ -22,9 +22,8 @@ def join_spread(img):
         )
         print(f"[JOIN] {img}")
         subprocess.run(["convert", "+append", page_left, page_right, page_joined])
-        # move individual pages of spreads to a subfolder "trash" rather than deleting to prevent some oopsies
-        shutil.move(page_right, "trash")
-        shutil.move(page_left, "trash")
+        os.remove(page_right)
+        os.remove(page_left)
     else:
         print("unexpected pagename format, failed to join: " + img)
 
@@ -43,6 +42,4 @@ def join_spreads():
 
 
 if __name__ == "__main__":
-    if not os.path.isdir("trash"):
-        os.mkdir("trash")
     join_spreads()
