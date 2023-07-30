@@ -37,7 +37,7 @@ def join_spreads():
         for ext in [glob(f"*.{ext}") for ext in config.ALLOWED_EXTENSIONS]
         for img in ext
     ]
-    imgs_to_join = [img for i, img in enumerate(imgs) if str(i) in join]
+    imgs_to_join = [img for i, img in enumerate(sorted(imgs)) if str(i) in join]
     with multiprocessing.Pool(processes=config.MULTIPROCESSING_CORES) as pool:
         pool.map(join_spread, imgs_to_join)
 
