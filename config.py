@@ -17,3 +17,5 @@ PUBLISHER_SHORTHAND = {}
 
 # number of cores to be used where applicable
 MULTIPROCESSING_CORES = 16
+
+PINGO_EXE_PATH = ""
