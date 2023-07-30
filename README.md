@@ -5,8 +5,30 @@ I'm adding stuff as I split it out from my previous script but they will probabl
 
 Since I'm splitting these out of a much worse all-in-one script I normally use, they are barely tested. Make backups of your files and use at your own risk. Use `--dry-run` where applicable.
 
+### These are written and tested on Linux, many probably need some edits to work on Windows.
 ### Most of these expect to be run from within the directory containing your images.
 ### Most of these operate on images in-place.
+
+---
+
+Some requirements for the various scripts here:
+
+`python-pillow`
+
+`imagemagick`
+
+`oxipng`
+
+`jpegtran`
+
+`wine`
+
+`pingo.exe`
+
+`waifu2x-ncnn-vulkan`
+
+`7z`
+
 ---
 
 Some related sources which may have helped with portions of this repo:
