@@ -14,3 +14,6 @@ DIRECTORY_PATTERN = r"(.+) v(\d{2,3}) \((\d{4})\) \(Digital\) \((.+)\)"
 
 # {"s": "Super Cool Publisher", "k": "Kinda Cool Publisher"}
 PUBLISHER_SHORTHAND = {}
+
+# number of cores to be used where applicable
+MULTIPROCESSING_CORES = 16
