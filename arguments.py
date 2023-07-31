@@ -73,6 +73,7 @@ def parse():
     parser.add_argument(
         "-ts", "--timestamp", help="modified timestamp, defaults to current time"
     )
+
     # join
     parser.add_argument(
         "-j",

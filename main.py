@@ -46,10 +46,6 @@ def split_work(
         pool.map(target_func, imgs_to_process)
 
 
-def print_img(img):
-    print(img)
-
-
 args = arguments.parse()
 imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 args = rename.get_info(
