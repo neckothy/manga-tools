@@ -1,19 +1,12 @@
 # neck's manga tools
 I mostly read [official digital volumes](https://gist.github.com/neckothy/6654f928fef87529646df3799f5e555a), so the tools in this repo may make some shortsighted assumptions based on that.
 
-~~I'm adding stuff as I split it out from my previous script but they will probably need additional changes to work properly as modules. I don't really know anything about that yet, but can see some obvious issues arising with the way everything is currently structured (if you could even call it that). I'll actually learn something and fix them later maybe.~~
-
-After some sleep I've realized I need to structure this a lot differently. I'll work on that & making everything more usable. Likely won't update this repo until I'm satisfied with that. Will leave the current scripts up in the meantime in case they're helpful for something. Expect something significantly better soon™
-
-Since I'm splitting these out of a much worse all-in-one script I normally use, they are barely tested. Make backups of your files and use at your own risk. Use `--dry-run` where applicable.
-
-### These are written and tested on Linux, many probably need some edits to work on Windows.
-### Most of these expect to be run from within the directory containing your images.
-### Most of these operate on images in-place.
+### This is written and tested on Linux, and definitely needs some edits to work properly on Windows.
+### This expects to be run within the directory containing your images
 
 ---
 
-Some requirements for the various scripts here:
+Some requirements for the various tools here:
 
 `python-pillow`
 
@@ -33,13 +26,13 @@ Some requirements for the various scripts here:
 
 ---
 
+**will probably add some actual documentation sometime, in the meantime just look at the code or `-h` I guess, gl**
+
+---
+
 Some related sources which may have helped with portions of this repo:
 
 - https://github.com/JodanJodan/MangaToolsnke
 - https://github.com/noaione/nao-manga-rls
 - Madokami Naming Scheme
 - Some of my cute manga reading friendos
-
----
-
-StackOverflow answer links should be included in comments where applicable.
