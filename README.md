@@ -35,7 +35,7 @@ Quick example in the meantime:
 
 1. Enter a directory `Yona of the Dawn v39 (2023) (Digital) (Tag)` containing pages `p000.jpg`-`p193.jpg`
 2. `python ~/manga-tools/main.py -del 1 -d -di 0 -g -gi 0 -l generic -li 0 -o -cn "223..228,228x1" -cp "3,33,63,95,125,155,181" -ct "The Moment to Put Everything on the Line,,Beyond the Limit,,Exhale,,A Tender Daybreak,,Lurking Under the Cover of Darkness,,Desertion,,Once Upon a Time, in a Land Far Away" -p "VIZ Media" -z -ts "2023-08-01" -j 30` 
-3. directory now contains the original pages `p000.jpg`-`p193.jpg`, an archive `Yona of the Dawn v39 (2023) (Digital) (Tag).cbz`, as well as a subdirectory `work` containing the finished pages `Yona of the Dawn - c223 (v39) - p000 [dig] [The Moment to Put Everything on the Line] [VIZ Media] [Tag].jpg`-`'Yona of the Dawn - c228x1 (v39) - p192 [dig] [Once Upon a Time, in a Land Far Away] [VIZ Media] [Tag].png`
+3. directory now contains the original pages `p000.jpg`-`p193.jpg`, an archive `Yona of the Dawn v39 (2023) (Digital) (Tag).cbz`, as well as a subdirectory `work` containing the finished pages `Yona of the Dawn - c223 (v39) - p000 [dig] [The Moment to Put Everything on the Line] [VIZ Media] [Tag].jpg`-`Yona of the Dawn - c228x1 (v39) - p192 [dig] [Once Upon a Time, in a Land Far Away] [VIZ Media] [Tag].png`
 
 in the above example (but not necessarily in this listed order):
 
@@ -47,7 +47,7 @@ in the above example (but not necessarily in this listed order):
 - modified timestamps on the images were changed to the 1st of August, 2023
 - the pages were packed to a cbz archive 
 
-It's as "easy" as that
+It's as "easy" as that!
 
 ---
 
