@@ -30,10 +30,10 @@ def parse():
     # rename
     # common special pages (comma-split pages that should be tagged as x)
     # not implemented yet cuz I'm dumb & lazy
-    # parser.add_argument("-aft", "--afterword", help="Afterword")
-    # parser.add_argument("-cov", "--cover", help="Cover")
-    # parser.add_argument("-ext", "--extra", help="Extra")
-    # parser.add_argument("-toc", "--table-of-contents", help="ToC")
+    parser.add_argument("-aft", "--afterword", help="Afterword")
+    parser.add_argument("-cov", "--cover", help="Cover")
+    parser.add_argument("-ext", "--extra", help="Extra")
+    parser.add_argument("-toc", "--table-of-contents", help="ToC")
     # normal stuff
     parser.add_argument(
         "-cn",

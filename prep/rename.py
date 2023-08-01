@@ -37,37 +37,55 @@ def get_chapter_index(prev_index, img_index, chap_pages):
         return prev_index + 1
 
 
+def build_chapter_lists(args):
+    chap_nums, chap_pages = [], []
+    for num in args.chapter_numbers.split(","):
+        rng = re.match(r"(\d{1,4})\.\.(\d{1,4})", num)
+        bns = re.match(r"(\d{1,4})(x\d)", num)
+        if rng:
+            chap_nums.extend(range(int(rng.group(1)), int(rng.group(2)) + 1))
+        elif bns:
+            chap_nums.append(bns.group(1).zfill(args.chapter_padding) + bns.group(2))
+        else:
+            chap_nums.append(num)
+    chap_pages.extend(args.chapter_pages.split(","))
+    return (chap_nums, chap_pages)
+
+
+def tag_quality(img):
+    # danke danke
+    with Image.open(img) as data:
+        w, h = data.size
+    if min(w, h) > 1800 and not w > h:
+        quality = "{HQ}"
+    elif min(w, h) < 900:
+        quality = "{LQ}"
+    else:
+        quality = None
+    return quality
+
+
+def tag_special_page(args, i, name):
+    if args.afterword and i in args.afterword.split(","):
+        name += f" [Afterword]"
+    elif args.cover and i in args.cover.split(","):
+        name += f" [Cover]"
+    elif args.extra and i in args.extra.split(","):
+        name += f" [Extra]"
+    elif args.table_of_contents and i in args.table_of_contents.split(","):
+        name += f" [ToC]"
+    return name
+
+
 def rename_pages(args, imgs):
     chap_index = 0
 
     if args.chapter_numbers and args.chapter_pages:
-        chap_nums, chap_pages = [], []
-        for num in args.chapter_numbers.split(","):
-            rng = re.match(r"(\d{1,4})\.\.(\d{1,4})", num)
-            bns = re.match(r"(\d{1,4})(x\d)", num)
-            if rng:
-                chap_nums.extend(range(int(rng.group(1)), int(rng.group(2)) + 1))
-            elif bns:
-                chap_nums.append(
-                    bns.group(1).zfill(args.chapter_padding) + bns.group(2)
-                )
-            else:
-                chap_nums.append(num)
-        chap_pages.extend(args.chapter_pages.split(","))
-
-    # absolutely weaponized version of https://stackoverflow.com/a/952952
+        chap_nums, chap_pages = build_chapter_lists(args)
 
     for i, img in enumerate(imgs):
-        # danke danke
         ext = img.rsplit(".", maxsplit=1)[1]
-        with Image.open(img) as data:
-            w, h = data.size
-        if min(w, h) > 1800 and not w > h:
-            quality = "{HQ}"
-        elif min(w, h) < 900:
-            quality = "{LQ}"
-        else:
-            quality = ""
+        quality = tag_quality(img)
 
         if args.chapter_numbers and args.chapter_pages:
             chap_index = get_chapter_index(chap_index, i, chap_pages)
@@ -84,14 +102,19 @@ def rename_pages(args, imgs):
             new_name = f"{args.title} - c{str(chap_num).zfill(args.chapter_padding)}"
             if args.volume:
                 new_name += f" (v{args.volume.zfill(args.volume_padding)})"
-            new_name += f" - p{str(i).zfill(3)} [dig]"
+            new_name += f" - p{str(i).zfill(3)}"
+            new_name = tag_special_page(args, str(i), new_name)
+            new_name += " [dig]"
             if chap_title:
                 new_name += f" [{chap_title}]"
         else:
             new_name = f"{args.title}"
             if args.volume:
                 new_name += f" (v{args.volume.zfill(args.volume_padding)})"
-            new_name += f" - p{str(i).zfill(3)} [dig]"
+            new_name += f" - p{str(i).zfill(3)}"
+            new_name = tag_special_page(args, str(i), new_name)
+            new_name += " [dig]"
+
         new_name += f" [{args.publisher}]"
         if args.ripper:
             new_name += f" [{args.ripper}]"
