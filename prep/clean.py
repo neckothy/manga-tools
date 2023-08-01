@@ -51,6 +51,7 @@ def level_page(args):
     i, img, level, grayscale, grayscale_ignore = args
     ext = img.rsplit(".", maxsplit=1)[1]
     process_args = [
+        "magick",
         "convert",
         img,
         "-format",
