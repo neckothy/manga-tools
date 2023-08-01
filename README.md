@@ -31,7 +31,7 @@ Some requirements for the various tools here:
 
 **will probably add some actual documentation sometime, in the meantime just look at the code or `-h` I guess, gl**
 
-Quick example in the meantime:
+Quick example:
 
 1. Enter a directory `Yona of the Dawn v39 (2023) (Digital) (Tag)` containing pages `p000.jpg`-`p193.jpg`
 2. `python ~/manga-tools/main.py -del 1 -d -di 0 -g -gi 0 -l generic -li 0 -o -cn "223..228,228x1" -cp "3,33,63,95,125,155,181" -ct "The Moment to Put Everything on the Line,,Beyond the Limit,,Exhale,,A Tender Daybreak,,Lurking Under the Cover of Darkness,,Desertion,,Once Upon a Time, in a Land Far Away" -p "VIZ Media" -z -ts "2023-08-01" -j 30` 
