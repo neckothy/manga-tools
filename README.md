@@ -7,8 +7,8 @@ I mostly read [official digital volumes](https://gist.github.com/neckothy/6654f9
 
 for example:
 
-- ~~`--optimize` always runs pingo in wine~~ should now just expect pingo in path if running windows
-- ~~``--timestamp`` relies on `touch`, not sure how this works in windows~~ should now support modifying time on windows but with less freedom than linux (expects `%Y-%m-%d`)
+- `--optimize` ~~always runs pingo in wine~~ should now just expect pingo in path if running windows
+- `--timestamp` ~~relies on `touch`, not sure how this works in windows~~ should now support modifying time on windows but with less freedom than linux (expects `%Y-%m-%d` e.g. `2023-08-01`)
 - etc
 
 
