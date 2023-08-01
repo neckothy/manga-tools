@@ -46,6 +46,9 @@ def parse():
     parser.add_argument(
         "-ct", "--chapter-titles", help="TWO comma-split chapter titles (title,,title2)"
     )
+    parser.add_argument(
+        "-nr", "--no-rename", help="don't rename images", action="store_true"
+    )
     parser.add_argument("-p", "--publisher", help="publisher name")
     parser.add_argument("-r", "--ripper", help="ripper tag")
     parser.add_argument("-t", "--title", help="series title")

@@ -48,18 +48,19 @@ def split_work(
 
 args = arguments.parse()
 imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
-args = rename.get_info(
-    args, config.RIPPER_TAG, config.DIRECTORY_PATTERN, config.PUBLISHER_SHORTHAND
-)
+if not args.no_rename:
+    args = rename.get_info(
+        args, config.RIPPER_TAG, config.DIRECTORY_PATTERN, config.PUBLISHER_SHORTHAND
+    )
 
 imgs = make_work_folder(imgs)
 
 if args.delete_pages:
     split_work(delete.delete_page, imgs, allowed=args.delete_pages.split(","))
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
-
-rename.rename_pages(args, imgs)
-imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
+if not args.no_rename:
+    rename.rename_pages(args, imgs)
+    imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 if args.grayscale:
     grayscale_ignore = (
         args.grayscale_ignore.split(",") if args.grayscale_ignore else None
