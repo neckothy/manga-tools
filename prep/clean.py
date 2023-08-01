@@ -2,7 +2,7 @@ import subprocess
 import os
 
 
-def grayscale_page(img):
+def grayscale_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
     print(f"[GRAYSCALE] {img}")
     if ext == "jpg":
@@ -26,7 +26,7 @@ def grayscale_page(img):
         )
 
 
-def denoise_page(img):
+def denoise_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
     print(f"[DENOISE] {img}")
     subprocess.run(
@@ -47,8 +47,7 @@ def denoise_page(img):
 
 
 # def level_page(img, level):
-def level_page(args):
-    i, img, level, grayscale, grayscale_ignore = args
+def level_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
     process_args = [
         "magick",
@@ -61,17 +60,20 @@ def level_page(args):
         "-dither",
         "None",
     ]
-    if grayscale and str(i) not in grayscale_ignore:
+    grayscale_ignore = (
+        args.grayscale_ignore.split(",") if args.grayscale_ignore else None
+    )
+    if args.grayscale and str(i) not in grayscale_ignore:
         process_args.extend(["-colorspace", "Gray"])
-    if level == "auto":
+    if args.level == "auto":
         process_args.append("-auto-level")
     # maybe ok-ish lazy settings for a lot of modern digitals with cmyk conversion issue
     # or whatever it is idk
     # colorblind btw
-    if level == "generic":
+    if args.level == "generic":
         process_args.extend(["-level", "12.55%,100%,1.25"])
     else:
-        process_args.extend(["-level", f"{level}"])
+        process_args.extend(["-level", f"{args.level}"])
     process_args.append(img.replace(ext, "png"))
     print(f"[LEVEL] {img}")
     subprocess.run(process_args)
@@ -79,7 +81,7 @@ def level_page(args):
         os.remove(img)
 
 
-def optimize_page(img):
+def optimize_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
     print(f"[OPTIMIZE] {img}")
     if ext == "jpg":

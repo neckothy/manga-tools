@@ -26,24 +26,20 @@ def split_work(
     count=config.MP_COUNT,
     ignored=None,
     allowed=None,
-    level_guh=False,
 ):
-    # shitty hack for passing needed level args, need to fix betterer
-    if level_guh:
+    if ignored:
         imgs_to_process = [
-            (i, img, args.level, args.grayscale, grayscale_ignore)
-            for i, img in enumerate(imgs)
-            if str(i) not in ignored
+            (i, img, args) for i, img in enumerate(imgs) if str(i) not in ignored
         ]
-    elif ignored:
-        imgs_to_process = [img for i, img in enumerate(imgs) if str(i) not in ignored]
     elif allowed:
-        imgs_to_process = [img for i, img in enumerate(imgs) if str(i) in allowed]
+        imgs_to_process = [
+            (i, img, args) for i, img in enumerate(imgs) if str(i) in allowed
+        ]
     else:
-        imgs_to_process = imgs
+        imgs_to_process = [(i, img, args) for i, img in enumerate(imgs)]
 
     with multiprocessing.Pool(processes=count) as pool:
-        pool.map(target_func, imgs_to_process)
+        pool.starmap(target_func, imgs_to_process)
 
 
 args = arguments.parse()
@@ -72,7 +68,7 @@ if args.denoise:
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 if args.level:
     level_ignore = args.level_ignore.split(",") if args.level_ignore else None
-    split_work(clean.level_page, imgs, ignored=args.level_ignore, level_guh=True)
+    split_work(clean.level_page, imgs, ignored=args.level_ignore)
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 if args.join:
     split_work(join.join_spread, imgs, allowed=args.join.split(","))
