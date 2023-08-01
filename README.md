@@ -1,31 +1,34 @@
 # neck's manga tools
-Personal scripts I use for organizing my digital manga purchases. Likely not usable for most people currently, but maybe some parts of it will be useful to someone. I will try to make it more "general" over time, hopefully getting to a sort of clone & run level at some point.
+Personal scripts I use for organizing my digital manga purchases.
 
 I mostly read [official digital volumes](https://gist.github.com/neckothy/6654f928fef87529646df3799f5e555a), so the tools in this repo may make some shortsighted assumptions based on that.
 
-### This is written and tested on Linux, and definitely needs some edits to work properly on Windows.
+### This is written and tested on Linux, and might need some edits to work properly on Windows.
 
 for example:
 
-- `--optimize` ~~always runs pingo in wine~~ should now just expect pingo in path if running windows
-- `--timestamp` ~~relies on `touch`, not sure how this works in windows~~ should now support modifying time on windows but with less freedom than linux (expects `%Y-%m-%d` e.g. `2023-08-01`)
-- etc
+- `--optimize` ~~always runs pingo in wine~~ should now just expect pingo in path if running Windows
+- `--timestamp` ~~relies on `touch`, not sure how this works in Windows~~ should now support modifying time on Windows but with less freedom than Linux (expects `%Y-%m-%d` e.g. `2023-08-01`)
+- let me know if you encounter others as I don't have a Windows machine to test on
+
 
 
 ### This expects to be run within the directory containing your images
 
 ---
 
-Some requirements for the various tools here:
+In addition to any modules in `requirements.txt`, various tools here expect the following in your system PATH:
 
-- `python-pillow`
-- `imagemagick`
-- `oxipng`
-- `jpegtran`
-- `wine`
-- `pingo.exe`
-- `waifu2x-ncnn-vulkan`
 - `7z`
+- `magick`
+- `jpegtran`
+- `oxipng`
+- `pingo` (on Linux `wine` and `pingo.exe` in `~/pingo/`)
+- `waifu2x-ncnn-vulkan`
+
+on Arch Linux all requirements can be installed like so:
+1. `pacman -S imagemagick libjpeg-turbo oxipng p7zip python-pillow waifu2x-ncnn-vulkan wine`
+2. [download](https://css-ig.net/pingo) `pingo-win64.zip`, extract to `~/pingo`
 
 ---
 
@@ -51,7 +54,7 @@ It's as "easy" as that!
 
 ---
 
-Some related sources which may have helped with portions of this repo:
+Some related sources which may have helped with or inspired portions of this repo:
 
 - https://github.com/JodanJodan/MangaToolsnke
 - https://github.com/noaione/nao-manga-rls
