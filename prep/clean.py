@@ -1,5 +1,5 @@
 import subprocess
-from os import path, remove
+import os
 
 
 def grayscale_page(img):
@@ -43,7 +43,7 @@ def denoise_page(img):
         ]
     )
     if ext == "jpg":
-        remove(img)
+        os.remove(img)
 
 
 # def level_page(img, level):
@@ -76,24 +76,25 @@ def level_page(args):
     print(f"[LEVEL] {img}")
     subprocess.run(process_args)
     if ext == "jpg":
-        remove(img)
+        os.remove(img)
 
 
 def optimize_page(img):
     ext = img.rsplit(".", maxsplit=1)[1]
     print(f"[OPTIMIZE] {img}")
     if ext == "jpg":
-        # hehe
-        subprocess.run(
-            [
+        if os.name == "posix":
+            process_args = [
                 "wine",
-                path.expanduser("~/pingo/pingo.exe"),
+                os.path.expanduser("~/pingo/pingo.exe"),
                 "-l",
                 "-s4",
                 "-strip",
                 img,
             ]
-        )
+        elif os.name == "nt":
+            process_args = ["pingo", "-l", "-s4", "-strip", img]
+        subprocess.run(process_args)
         # subprocess.run(["jpegtran", "-optimize", "-copy", "none", "-outfile", img, img])
     elif ext == "png":
         subprocess.run(
