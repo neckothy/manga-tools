@@ -1,10 +1,1 @@
 Pillow
-
-# additional, non-Python requirements
-# imagemagick
-# oxipng
-# jpegtran
-# wine
-# pingo.exe
-# waifu2x-ncnn-vulkan
-# 7z
