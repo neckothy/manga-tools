@@ -1,5 +1,5 @@
 import subprocess
-from os import remove
+from os import path, remove
 
 
 def grayscale_page(img):
@@ -85,7 +85,14 @@ def optimize_page(img):
     if ext == "jpg":
         # hehe
         subprocess.run(
-            ["wine", "/home/neck/pingo/pingo.exe", "-l", "-s4", "-strip", img]
+            [
+                "wine",
+                f"{path.expanduser('~')}/pingo/pingo.exe",
+                "-l",
+                "-s4",
+                "-strip",
+                img,
+            ]
         )
         # subprocess.run(["jpegtran", "-optimize", "-copy", "none", "-outfile", img, img])
     elif ext == "png":
