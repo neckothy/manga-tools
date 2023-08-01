@@ -87,7 +87,7 @@ def optimize_page(img):
         subprocess.run(
             [
                 "wine",
-                f"{path.expanduser('~')}/pingo/pingo.exe",
+                path.expanduser("~/pingo/pingo.exe"),
                 "-l",
                 "-s4",
                 "-strip",
