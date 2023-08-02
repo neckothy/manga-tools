@@ -63,6 +63,16 @@ if not args.no_rename:
     rename.rename_pages(args, imgs)
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 
+if args.denoise:
+    denoise_ignore = args.denoise_ignore.split(",") if args.denoise_ignore else None
+    split_work(
+        clean.denoise_page,
+        imgs,
+        count=config.MP_COUNT_DENOISE,
+        ignored=denoise_ignore,
+    )
+    imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
+
 if args.grayscale:
     grayscale_ignore = (
         args.grayscale_ignore.split(",") if args.grayscale_ignore else None
@@ -73,16 +83,6 @@ if args.grayscale:
         count=config.MP_COUNT_GRAYSCALE,
         ignored=grayscale_ignore,
     )
-
-if args.denoise:
-    denoise_ignore = args.denoise_ignore.split(",") if args.denoise_ignore else None
-    split_work(
-        clean.denoise_page,
-        imgs,
-        count=config.MP_COUNT_DENOISE,
-        ignored=denoise_ignore,
-    )
-    imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 
 if args.level:
     level_ignore = args.level_ignore.split(",") if args.level_ignore else None
