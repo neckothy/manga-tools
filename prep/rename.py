@@ -81,12 +81,14 @@ def rename_pages(args, imgs):
 
     if args.chapter_numbers and args.chapter_pages:
         chap_nums, chap_pages = build_chapter_lists(args)
+    else:
+        chap_nums, chap_pages = None, None
 
     for i, img in enumerate(imgs):
         ext = img.rsplit(".", maxsplit=1)[1]
         quality = tag_quality(img)
 
-        if args.chapter_numbers and args.chapter_pages:
+        if chap_nums and chap_pages:
             chap_index = get_chapter_index(chap_index, i, chap_pages)
             chap_num = chap_nums[chap_index] if chap_nums and chap_pages else None
             chap_title = (
