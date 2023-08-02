@@ -17,7 +17,7 @@ def zip_volume(args, imgs):
         modify_time = (
             time.time()
             if not args.timestamp
-            else time.mktime(time.strptime(args.timestamp, "%Y-%m-%d"))
+            else time.mktime(time.strptime(args.timestamp, args.config_date_format))
         )
         os.utime(img, (modify_time, modify_time))
     if args.volume:

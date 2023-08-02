@@ -98,5 +98,6 @@ def parse(config):
     args.config_ripper_tag = config.RIPPER_TAG
     args.config_level_preset = config.LEVEL_PRESET
     args.config_pub_short = config.PUBLISHER_SHORTHAND
+    args.config_date_format = config.DATE_FORMAT
 
     return args

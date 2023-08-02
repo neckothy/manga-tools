@@ -32,3 +32,10 @@ MP_COUNT_OPTIMIZE = 2
 
 # level arg to use in place of "generic"
 LEVEL_PRESET = "12.55%,100%,1.25"
+
+# expected date format string for modifying timestamps
+# https://docs.python.org/3/library/time.html#time.strftime
+# windows only, as linux uses `touch -d`
+# https://man.archlinux.org/man/touch.1.en#DATE_STRING
+# default expects something like "2023-08-24"
+DATE_FORMAT = "%Y-%m-%d"
