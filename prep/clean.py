@@ -88,10 +88,11 @@ def optimize_page(i, img, args):
                 "-l",
                 "-s4",
                 "-strip",
+                "-quiet",
                 img,
             ]
         elif os.name == "nt":
-            process_args = ["pingo", "-l", "-s4", "-strip", img]
+            process_args = ["pingo", "-l", "-s4", "-strip", "-quiet", img]
         subprocess.run(process_args)
     elif ext == "png":
         subprocess.run(
