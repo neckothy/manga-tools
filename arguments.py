@@ -1,7 +1,7 @@
 import argparse
 
 
-def parse():
+def parse(config):
     parser = argparse.ArgumentParser()
 
     # clean
@@ -92,4 +92,11 @@ def parse():
     )
 
     args = parser.parse_args()
+    args.config_pingo_path = config.PINGO_EXE_PATH
+    args.config_dir_pattern = config.DIRECTORY_PATTERN
+    args.config_join_pattern = config.JOIN_PATTERN
+    args.config_ripper_tag = config.RIPPER_TAG
+    args.config_level_preset = config.LEVEL_PRESET
+    args.config_pub_short = config.PUBLISHER_SHORTHAND
+
     return args

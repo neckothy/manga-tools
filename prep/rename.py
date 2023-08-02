@@ -4,20 +4,19 @@ import re
 import shutil
 
 
-def get_info(args, ripper_tag="", dir_pattern="", pub_shorthand={}):
-    ripper = ripper_tag if ripper_tag else None
+def get_info(args):
     folder = os.path.basename(os.getcwd())
-    match = re.match(dir_pattern, folder)
+    match = re.match(args.config_dir_pattern, folder)
     if match:
         title, volume, year, ripper = match.groups()
     else:
-        title, volume, year, ripper = None, None, None, ripper
+        title, volume, year, ripper = None, None, None, args.config_ripper_tag
     args.title = args.title or title
     args.volume = args.volume or volume
     args.year = args.year or year
     args.ripper = args.ripper or ripper
     args.publisher = args.publisher or None
-    if args.publisher and args.publisher in pub_shorthand:
+    if args.publisher and args.publisher in args.config_pub_short:
         args.publisher = pub_shorthand[args.publisher]
     if args.title and args.year and args.publisher:
         return args

@@ -67,13 +67,10 @@ def level_page(i, img, args):
         process_args.extend(["-colorspace", "Gray"])
     if args.level == "auto":
         process_args.append("-auto-level")
-    # maybe ok-ish lazy settings for a lot of modern digitals with cmyk conversion issue
-    # or whatever it is idk
-    # colorblind btw
     if args.level == "generic":
-        process_args.extend(["-level", "12.55%,100%,1.25"])
+        process_args.extend(["-level", args.config_level_preset])
     else:
-        process_args.extend(["-level", f"{args.level}"])
+        process_args.extend(["-level", args.level])
     process_args.append(img.replace(ext, "png"))
     print(f"[LEVEL] {img}")
     subprocess.run(process_args)
@@ -88,7 +85,7 @@ def optimize_page(i, img, args):
         if os.name == "posix":
             process_args = [
                 "wine",
-                os.path.expanduser("~/pingo/pingo.exe"),
+                os.path.expanduser(args.config_pingo_path),
                 "-l",
                 "-s4",
                 "-strip",

@@ -3,8 +3,8 @@ import re
 import subprocess
 
 
-def join_spread(i, img, args, pattern=r"(.+ p)(\d{3})( .+)"):
-    m = re.match(pattern, img)
+def join_spread(i, img, args):
+    m = re.match(args.config_join_pattern, img)
     if m:
         page_right_num = m.group(2)
         page_right = img
