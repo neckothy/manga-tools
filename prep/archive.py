@@ -4,9 +4,7 @@ import time
 
 
 def zip_volume(args, imgs):
-    # idk how to modify timestamps on windows and haven't bothered to look it up
     if os.name == "posix":
-        # https://man.archlinux.org/man/touch.1.en#DATE_STRING
         process_args = (
             ["touch"] if not args.timestamp else ["touch", "-d", args.timestamp]
         )
