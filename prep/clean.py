@@ -37,7 +37,7 @@ def denoise_page(i, img, args):
             "-o",
             img.replace(ext, "png"),
             "-n",
-            "1",
+            args.config_denoise_level,
             "-s",
             "1",
         ]

@@ -39,3 +39,7 @@ LEVEL_PRESET = "12.55%,100%,1.25"
 # https://man.archlinux.org/man/touch.1.en#DATE_STRING
 # default expects something like "2023-08-24"
 DATE_FORMAT = "%Y-%m-%d"
+
+# waifu2x-ncnn-vulkan noise-level arg https://github.com/nihui/waifu2x-ncnn-vulkan#full-usages
+# expects a value of -1/0/1/2/3, -1 = no effect (pointless here), 3 = strongest effect
+DENOISE_LEVEL = "1"

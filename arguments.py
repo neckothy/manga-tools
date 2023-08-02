@@ -99,5 +99,6 @@ def parse(config):
     args.config_level_preset = config.LEVEL_PRESET
     args.config_pub_short = config.PUBLISHER_SHORTHAND
     args.config_date_format = config.DATE_FORMAT
+    args.config_denoise_level = config.DENOISE_LEVEL
 
     return args
