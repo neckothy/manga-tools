@@ -89,36 +89,38 @@ def rename_pages(args, imgs):
         if args.chapter_numbers and args.chapter_pages:
             chap_index = get_chapter_index(chap_index, i, chap_pages)
             chap_num = chap_nums[chap_index] if chap_nums and chap_pages else None
-        else:
-            chap_num = None
-
-        if chap_num:
             chap_title = (
                 args.chapter_titles.split(",,")[chap_index]
                 if args.chapter_titles
                 else None
             )
+        else:
+            chap_num = None
+            chap_title = None
+
+        if chap_num:
             new_name = f"{args.title} - c{str(chap_num).zfill(args.chapter_padding)}"
-            if args.volume:
-                new_name += f" (v{args.volume.zfill(args.volume_padding)})"
-            new_name += f" - p{str(i).zfill(3)}"
-            new_name = tag_special_page(args, str(i), new_name)
-            new_name += " [dig]"
-            if chap_title:
-                new_name += f" [{chap_title}]"
         else:
             new_name = f"{args.title}"
-            if args.volume:
-                new_name += f" (v{args.volume.zfill(args.volume_padding)})"
-            new_name += f" - p{str(i).zfill(3)}"
-            new_name = tag_special_page(args, str(i), new_name)
-            new_name += " [dig]"
+
+        if args.volume:
+            new_name += f" (v{args.volume.zfill(args.volume_padding)})"
+
+        new_name += f" - p{str(i).zfill(3)}"
+        new_name = tag_special_page(args, str(i), new_name)
+        new_name += " [dig]" if not args.web_toggle else " [web]"
+
+        if chap_title:
+            new_name += f" [{chap_title}]"
 
         new_name += f" [{args.publisher}]"
+
         if args.ripper:
             new_name += f" [{args.ripper}]"
+
         if quality:
             new_name += f" {quality}"
+
         new_name += f".{ext}"
 
         shutil.move(img, new_name)
