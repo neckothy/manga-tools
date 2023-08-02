@@ -80,14 +80,14 @@ if args.denoise:
         clean.denoise_page,
         imgs,
         count=config.MP_COUNT_DENOISE,
-        ignored=args.denoise_ignore,
+        ignored=denoise_ignore,
     )
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 
 if args.level:
     level_ignore = args.level_ignore.split(",") if args.level_ignore else None
     split_work(
-        clean.level_page, imgs, count=config.MP_COUNT_LEVEL, ignored=args.level_ignore
+        clean.level_page, imgs, count=config.MP_COUNT_LEVEL, ignored=level_ignore
     )
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 

@@ -46,7 +46,6 @@ def denoise_page(i, img, args):
         os.remove(img)
 
 
-# def level_page(img, level):
 def level_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
     process_args = [
@@ -94,7 +93,6 @@ def optimize_page(i, img, args):
         elif os.name == "nt":
             process_args = ["pingo", "-l", "-s4", "-strip", img]
         subprocess.run(process_args)
-        # subprocess.run(["jpegtran", "-optimize", "-copy", "none", "-outfile", img, img])
     elif ext == "png":
         subprocess.run(
             ["oxipng", "-o", "6", "-i", "0", "--strip", "all", "--quiet", img]
