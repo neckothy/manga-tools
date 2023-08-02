@@ -3,15 +3,6 @@ Personal scripts I use for organizing my digital manga purchases.
 
 I mostly read [official digital volumes](https://gist.github.com/neckothy/6654f928fef87529646df3799f5e555a), so the tools in this repo may make some shortsighted assumptions based on that.
 
-### This is written and tested on Linux, and might need some edits to work properly on Windows.
-
-for example:
-
-- `--optimize` ~~always runs pingo in wine~~ should now just expect pingo in path if running Windows
-- `--timestamp` ~~relies on `touch`, not sure how this works in Windows~~ should now support modifying time on Windows but with less freedom than Linux (expects `%Y-%m-%d` e.g. `2023-08-01`)
-- let me know if you encounter others as I don't have a Windows machine to test on
-
-
 
 ### This expects to be run within the directory containing your images
 
@@ -32,7 +23,7 @@ on Arch Linux all requirements can be installed like so:
 
 ---
 
-**will probably add some actual documentation sometime, in the meantime just look at the code or `-h` I guess, gl**
+See [the wiki](https://github.com/neckothy/manga-tools/wiki) for more specific information.
 
 Quick example:
 
