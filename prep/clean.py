@@ -35,7 +35,7 @@ def denoise_page(i, img, args):
             "-i",
             img,
             "-o",
-            f"{img[:img.rindex(ext)]}png",
+            img[: img.rindex(ext)] + "png",
             "-n",
             args.config_denoise_level,
             "-s",
@@ -70,7 +70,7 @@ def level_page(i, img, args):
         process_args.extend(["-level", args.config_level_preset])
     else:
         process_args.extend(["-level", args.level])
-    process_args.append(f"{img[:img.rindex(ext)]}png")
+    process_args.append(img[: img.rindex(ext)] + "png")
     print(f"[LEVEL] {img}")
     subprocess.run(process_args)
     if ext == "jpg":
