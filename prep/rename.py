@@ -17,7 +17,7 @@ def get_info(args):
     args.ripper = args.ripper or ripper
     args.publisher = args.publisher or None
     if args.publisher and args.publisher in args.config_pub_short:
-        args.publisher = pub_shorthand[args.publisher]
+        args.publisher = args.config_pub_short[args.publisher]
     if args.title and args.year and args.publisher:
         return args
     else:
