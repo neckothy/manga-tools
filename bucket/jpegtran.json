@@ -1,0 +1,8 @@
+{
+    "version": "latest",
+    "description": "lossless transformation of JPEG files",
+    "homepage": "https://jpegclub.org/jpegtran/",
+    "license": "https://spdx.org/licenses/IJG.html",
+    "url": "https://jpegclub.org/jpegtran.exe",
+    "bin": "jpegtran.exe"
+}
