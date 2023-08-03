@@ -4,7 +4,8 @@ import os
 
 def grayscale_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
-    print(f"[GRAYSCALE] {img}")
+    if not args.quiet:
+        print(f"[GRAYSCALE] {img}")
     if ext == "jpg":
         subprocess.run(["jpegtran", "-grayscale", "-outfile", img, img])
     if ext == "png":
@@ -28,7 +29,8 @@ def grayscale_page(i, img, args):
 
 def denoise_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
-    print(f"[DENOISE] {img}")
+    if not args.quiet:
+        print(f"[DENOISE] {img}")
     subprocess.run(
         [
             "waifu2x-ncnn-vulkan",
@@ -71,7 +73,8 @@ def level_page(i, img, args):
     else:
         process_args.extend(["-level", args.level])
     process_args.append(img[: img.rindex(ext)] + "png")
-    print(f"[LEVEL] {img}")
+    if not args.quiet:
+        print(f"[LEVEL] {img}")
     subprocess.run(process_args)
     if ext == "jpg":
         os.remove(img)
@@ -79,7 +82,8 @@ def level_page(i, img, args):
 
 def optimize_page(i, img, args):
     ext = img.rsplit(".", maxsplit=1)[1]
-    print(f"[OPTIMIZE] {img}")
+    if not args.quiet:
+        print(f"[OPTIMIZE] {img}")
     if ext == "jpg":
         if os.name == "posix":
             process_args = [

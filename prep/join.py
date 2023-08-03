@@ -13,7 +13,8 @@ def join_spread(i, img, args):
         page_joined = (
             f"{m.group(1)}{page_right_num}-{page_left_num}{m.group(3)[:-4]}.png"
         )
-        print(f"[JOIN] {img}")
+        if not args.quiet:
+            print(f"[JOIN] {img}")
         subprocess.run(
             ["magick", "convert", "+append", page_left, page_right, page_joined]
         )

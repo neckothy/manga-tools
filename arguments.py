@@ -94,6 +94,8 @@ def parse(config):
         help="comma-split list of pages to be removed (from the work folder)",
     )
 
+    parser.add_argument("-q", "--quiet", help="shut up", action="store_true")
+
     args = parser.parse_args()
     args.config_pingo_path = config.PINGO_EXE_PATH
     args.config_dir_pattern = config.DIRECTORY_PATTERN
