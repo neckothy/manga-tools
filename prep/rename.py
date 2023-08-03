@@ -110,7 +110,7 @@ def rename_pages(args, imgs):
 
         new_name += f" - p{str(i).zfill(3)}"
         new_name = tag_special_page(args, str(i), new_name)
-        new_name += " [dig]" if not args.web_toggle else " [web]"
+        new_name += " [dig]" if not args.web else " [web]"
 
         if chap_title:
             new_name += f" [{chap_title}]"

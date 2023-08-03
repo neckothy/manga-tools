@@ -69,7 +69,7 @@ def parse(config):
         default=2,
     )
     parser.add_argument(
-        "-web", "--web-toggle", help="tag [web] instead of [dig]", action="store_true"
+        "-w", "--web", help="tag [web] instead of [dig]", action="store_true"
     )
 
     # archive
