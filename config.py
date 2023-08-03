@@ -19,8 +19,24 @@ DIRECTORY_PATTERN = r"(.+) v(\d{2,3}) \((\d{4})\) \(Digital\) \((.+)\)"
 # pattern expected when joining pages
 JOIN_PATTERN = r"(.+ p)(\d{3})( .+)"
 
-# {"s": "Super Cool Publisher", "k": "Kinda Cool Publisher"}
-PUBLISHER_SHORTHAND = {}
+# shortcuts when using --publisher
+PUBLISHER_SHORTHAND = {
+    "dh": "Dark Horse",
+    "d": "DENPA",
+    "f": "FAKKU!",
+    "gbb": "Glacier Bay Books",
+    "ic": "Irodori Comics",
+    "jnc": "J-Novel Club",
+    "kb": "Kaiten Books",
+    "kc": "Kodansha Comics",
+    "opb": "One Peace Books",
+    "7s": "Seven Seas",
+    "se": "Square Enix",
+    "sfb": "Star Fruit Books",
+    "tp": "TOKYOPOP",
+    "vm": "VIZ Media",
+    "yp": "Yen Press",
+}
 
 # number of processes to be used where applicable
 MP_COUNT_DENOISE = 1
@@ -30,7 +46,7 @@ MP_COUNT_JOIN = 16
 MP_COUNT_LEVEL = 16
 MP_COUNT_OPTIMIZE = 2
 
-# level arg to use in place of "generic"
+# arg to substitute when using -level generic
 LEVEL_PRESET = "12.55%,100%,1.25"
 
 # expected date format string for modifying timestamps
