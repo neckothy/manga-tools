@@ -21,7 +21,7 @@ JOIN_PATTERN = r"(.+ p)(\d{3})( .+)"
 
 # shortcuts when using --publisher
 PUBLISHER_SHORTHAND = {
-    "dh": "Dark Horse",
+    "dh": "Dark Horse Comics",
     "d": "DENPA",
     "f": "FAKKU!",
     "gbb": "Glacier Bay Books",
