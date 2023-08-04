@@ -31,7 +31,7 @@ def parse(config):
     parser.add_argument(
         "-d",
         "--denoise",
-        help="Enable denoising of pages using DENOISE_LEVEL from config.py",
+        help="Enable denoising of pages using provided value, default = 1",
         nargs="?",
         const="1",
         default=None,
@@ -42,7 +42,7 @@ def parse(config):
     parser.add_argument(
         "-l",
         "--level",
-        help="Enable leveling of pages using provided value",
+        help="Enable leveling of pages using provided value, default = generic",
         nargs="?",
         const="generic",
         default=None,
