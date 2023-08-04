@@ -61,7 +61,7 @@ DATE_FORMAT = "%Y-%m-%d"
 DENOISE_LEVEL = "1"
 
 # a LIST of LISTS of argument strings to be executed at the end of this script
-# IF --post_script is used
+# IF --post_scripts is used
 # these run from your starting directory, not the work directory
 # [[~]] in a string expands to your home directory
 # [[cbz]] in a string expands to the finished archive filename
