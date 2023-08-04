@@ -7,6 +7,12 @@ def parse(config):
     parser.add_argument(
         "-q", "--quiet", help="Disable console output of scripts", action="store_true"
     )
+    parser.add_argument(
+        "-ps",
+        "--post-scripts",
+        help="Enable run of POST_SCRIPTS as defined in config.py",
+        action="store_true",
+    )
 
     # delete
     parser.add_argument(

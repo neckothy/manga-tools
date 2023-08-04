@@ -25,3 +25,4 @@ def zip_volume(args, imgs):
     subprocess.run(
         ["7z", "a", "-tzip", "-mtc=off", "-mx=0", f"../{archive_name}", "./*"]
     )
+    return archive_name

@@ -59,3 +59,16 @@ DATE_FORMAT = "%Y-%m-%d"
 # waifu2x-ncnn-vulkan noise-level arg https://github.com/nihui/waifu2x-ncnn-vulkan#full-usages
 # expects a value of -1/0/1/2/3, -1 = no effect (pointless here), 3 = strongest effect
 DENOISE_LEVEL = "1"
+
+# a LIST of LISTS of argument strings to be executed at the end of this script
+# IF --post_script is used
+# these run from your starting directory, not the work directory
+# [[~]] in a string expands to your home directory
+# [[cbz]] in a string expands to the finished archive filename
+# [[arg]] in a string expands to the given arg, e.g. [[title]] = args.title
+# default is just a simple example to clarify structure
+POST_SCRIPTS = [
+    ["mkdir", "-p", "[[~]]/manga/[[title]]"],
+    ["mv", "./[[cbz]]", "[[~]]/manga/[[title]]"],
+    ["rm", "-r", "./work"],
+]

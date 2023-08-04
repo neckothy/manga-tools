@@ -1,21 +1,21 @@
 import config
 import arguments
 from prep import clean, join, rename, archive, delete
-from util import glob_imgs
+from util import glob_imgs, post_script
 
 import multiprocessing
 import os
 import shutil
 
 
-def make_work_folder(imgs):
+def make_work_folder(imgs, cwd):
     if not os.path.isdir("work"):
         os.mkdir("work")
         for img in imgs:
-            shutil.copy(img, f"{os.getcwd()}/work/{img}")
+            shutil.copy(img, f"{cwd}/work/{img}")
     else:
         print("existing work folder found, using existing images")
-    os.chdir("./work")
+    os.chdir(f"{cwd}/work")
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
     return imgs
 
@@ -42,13 +42,14 @@ def split_work(
         pool.starmap(target_func, imgs_to_process)
 
 
+cwd = os.getcwd()
 args = arguments.parse(config)
 imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 
 if not args.no_rename:
     args = rename.get_info(args)
 
-imgs = make_work_folder(imgs)
+imgs = make_work_folder(imgs, cwd)
 
 if args.delete_pages:
     split_work(
@@ -101,4 +102,10 @@ if args.optimize:
     split_work(clean.optimize_page, imgs, count=config.MP_COUNT_OPTIMIZE)
 
 if args.zip:
-    archive.zip_volume(args, imgs)
+    archive_name = archive.zip_volume(args, imgs)
+else:
+    archive_name = None
+
+if args.post_scripts and config.POST_SCRIPTS:
+    os.chdir(cwd)
+    post_script.parse_and_run(args, config.POST_SCRIPTS, archive_name)
