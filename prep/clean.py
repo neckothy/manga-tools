@@ -68,7 +68,7 @@ def level_page(i, img, args):
         process_args.extend(["-colorspace", "Gray"])
     if args.level == "auto":
         process_args.append("-auto-level")
-    if args.level == "generic":
+    if args.level == "generic" or args.level == "preset" or args.level == "default":
         process_args.extend(["-level", args.config_level_preset])
     else:
         process_args.extend(["-level", args.level])
