@@ -32,7 +32,9 @@ def parse(config):
         "-d",
         "--denoise",
         help="Enable denoising of pages using DENOISE_LEVEL from config.py",
-        action="store_true",
+        nargs="?",
+        const="1",
+        default=None,
     )
     parser.add_argument(
         "-g", "--grayscale", help="Enable grayscaling of pages", action="store_true"
@@ -41,6 +43,9 @@ def parse(config):
         "-l",
         "--level",
         help="Enable leveling of pages using provided value",
+        nargs="?",
+        const="generic",
+        default=None,
     )
     parser.add_argument(
         "-di",
@@ -159,6 +164,5 @@ def parse(config):
     args.config_level_preset = config.LEVEL_PRESET
     args.config_pub_short = config.PUBLISHER_SHORTHAND
     args.config_date_format = config.DATE_FORMAT
-    args.config_denoise_level = config.DENOISE_LEVEL
 
     return args

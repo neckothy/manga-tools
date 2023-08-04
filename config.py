@@ -56,10 +56,6 @@ LEVEL_PRESET = "12.55%,100%,1.25"
 # default expects something like "2023-08-24"
 DATE_FORMAT = "%Y-%m-%d"
 
-# waifu2x-ncnn-vulkan noise-level arg https://github.com/nihui/waifu2x-ncnn-vulkan#full-usages
-# expects a value of -1/0/1/2/3, -1 = no effect (pointless here), 3 = strongest effect
-DENOISE_LEVEL = "1"
-
 # a LIST of LISTS of argument strings to be executed at the end of this script
 # IF --post_scripts is used
 # these run from your starting directory, not the work directory
