@@ -17,7 +17,8 @@ def zip_volume(args, imgs):
             if not args.timestamp
             else time.mktime(time.strptime(args.timestamp, args.config_date_format))
         )
-        os.utime(img, (modify_time, modify_time))
+        for img in imgs:
+            os.utime(img, (modify_time, modify_time))
     if args.volume:
         archive_name = f"{args.title} v{args.volume.zfill(args.volume_padding)} ({args.year}) (Digital) ({args.ripper}).cbz"
     else:
