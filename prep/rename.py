@@ -2,6 +2,7 @@ import os
 from PIL import Image
 import re
 import shutil
+import sys
 
 
 def get_info(args):
@@ -21,10 +22,9 @@ def get_info(args):
     if args.title and args.year and args.publisher:
         return args
     else:
-        print(
+        sys.exit(
             f"missing a required value:\ntitle: {args.title}\nyear: {args.year}\npublisher: {args.publisher}"
         )
-        exit()
 
 
 def get_chapter_index(prev_index, img_index, chap_pages):
