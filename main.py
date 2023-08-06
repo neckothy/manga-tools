@@ -107,7 +107,10 @@ if __name__ == "__main__":
         split_work(clean.optimize_page, imgs, count=config.MP_COUNT_OPTIMIZE)
 
     if args.zip:
-        archive_name = archive.zip_volume(args, imgs)
+        archive_name = archive.build_archive_name(args)
+        archive.modify_timestamps(args, imgs)
+        archive.remove_existing(archive_name, cwd, args.quiet)
+        archive.zip_volume(archive_name, cwd)
     else:
         archive_name = None
 
