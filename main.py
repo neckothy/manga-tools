@@ -1,3 +1,4 @@
+#!/bin/python
 import config
 import arguments
 from prep import clean, join, rename, archive, delete
