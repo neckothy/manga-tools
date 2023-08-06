@@ -19,11 +19,17 @@ def zip_volume(args, imgs):
         )
         for img in imgs:
             os.utime(img, (modify_time, modify_time))
+
+    archive_name = args.title
     if args.volume:
-        archive_name = f"{args.title} v{args.volume.zfill(args.volume_padding)} ({args.year}) (Digital) ({args.ripper}).cbz"
-    else:
-        archive_name = f"{args.title} ({args.year}) (Digital) ({args.ripper}).cbz"
+        archive_name += f" v{args.volume.zfill(args.volume_padding)}"
+    archive_name += f" ({args.year}) (Digital)"
+    if args.fix:
+        archive_name += f" (F)"
+    archive_name += f" ({args.ripper}).cbz"
+
     subprocess.run(
         ["7z", "a", "-tzip", "-mtc=off", "-mx=0", f"../{archive_name}", "./*"]
     )
+
     return archive_name

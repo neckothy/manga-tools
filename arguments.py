@@ -143,6 +143,7 @@ def parse(config):
         help="Create a zip (.cbz) archive of finished pages",
         action="store_true",
     )
+    parser.add_argument("-f", "--fix", help="Tag archive (F)", action="store_true")
     parser.add_argument(
         "-ts",
         "--timestamp",
