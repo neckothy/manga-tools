@@ -5,28 +5,6 @@ import shutil
 import sys
 
 
-def get_info(args):
-    folder = os.path.basename(os.getcwd())
-    match = re.match(args.config_dir_pattern, folder)
-    if match:
-        title, volume, year, ripper = match.groups()
-    else:
-        title, volume, year, ripper = None, None, None, args.config_ripper_tag
-    args.title = args.title or title
-    args.volume = args.volume or volume
-    args.year = args.year or year
-    args.ripper = args.ripper or ripper
-    args.publisher = args.publisher or None
-    if args.publisher and args.publisher in args.config_pub_short:
-        args.publisher = args.config_pub_short[args.publisher]
-    if args.title and args.year and args.publisher:
-        return args
-    else:
-        sys.exit(
-            f"missing a required value:\ntitle: {args.title}\nyear: {args.year}\npublisher: {args.publisher}"
-        )
-
-
 def get_chapter_index(prev_index, img_index, chap_pages):
     if prev_index == len(chap_pages) - 1:
         return prev_index
@@ -115,7 +93,8 @@ def rename_pages(args, imgs):
         if chap_title:
             new_name += f" [{chap_title}]"
 
-        new_name += f" [{args.publisher}]"
+        if args.publisher:
+            new_name += f" [{args.publisher}]"
 
         if args.ripper:
             new_name += f" [{args.ripper}]"

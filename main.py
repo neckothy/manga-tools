@@ -2,7 +2,7 @@
 import config
 import arguments
 from prep import clean, join, rename, archive, delete
-from util import glob_imgs, post_script
+from util import get_info, glob_imgs, post_script
 
 import multiprocessing
 import os
@@ -48,9 +48,7 @@ if __name__ == "__main__":
     args = arguments.parse(config)
     imgs = glob_imgs.from_allowed_exts(config.ALLOWED_EXTENSIONS)
 
-    if not args.no_rename:
-        args = rename.get_info(args)
-
+    args = get_info.from_dir_name(args, cwd)
     imgs = make_work_folder(imgs, cwd)
 
     if args.delete_pages:
