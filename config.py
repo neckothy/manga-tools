@@ -10,11 +10,9 @@ PINGO_EXE_PATH = "~/pingo/pingo.exe"
 # scripts will attempt to parse some data from the directory name if neeeded
 # saves some typing if your "unprepared" folders contain useful info and follow a pattern
 # these should overwrite RIPPER_TAG if matched, and should be overwritten by args if supplied
-# note that you likely need to modify some of the scripts if you expect to use a modified pattern
-# since they expect certain groups to represent certain metadata
+# note that you likely need to modify util/get_info.py if you drastically alter this
 # default expects something like "Series Title v01 (2023) (Digital) (Ripper)"
-# and is usually referenced as: title, volume, year, ripper = match.groups()
-DIRECTORY_PATTERN = r"(.+) v(\d{2,3}) \((\d{4})\) \(Digital\) \((.+)\)"
+DIRECTORY_PATTERN = r"(?P<title>.+) v(?P<volume>\d{2,3}) \((?P<year>\d{4})\) \(Digital\) \((?P<ripper>.+)\)"
 
 # pattern expected when joining pages
 JOIN_PATTERN = r"(.+ p)(\d{3})( .+)"

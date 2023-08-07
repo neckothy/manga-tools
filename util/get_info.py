@@ -7,7 +7,10 @@ def from_dir_name(args, cwd):
     folder = os.path.basename(cwd)
     match = re.match(args.config_dir_pattern, folder)
     if match:
-        title, volume, year, ripper = match.groups()
+        title = match.group("title")
+        volume = match.group("volume")
+        year = match.group("year")
+        ripper = match.group("ripper")
     else:
         title, volume, year, ripper = None, None, None, args.config_ripper_tag
     args.title = args.title or title
