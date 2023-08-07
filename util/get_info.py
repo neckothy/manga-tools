@@ -18,11 +18,8 @@ def from_dir_name(args, cwd):
     if args.publisher and args.publisher in args.config_pub_short:
         args.publisher = args.config_pub_short[args.publisher]
 
-    if not args.no_rename and not args.title:
-        sys.exit("missing required value for rename: title")
-
-    if args.zip:
-        if not all([args.title, args.year, args.ripper]):
-            sys.exit("missing one or more required values for zip: title, year, ripper")
+    if args.zip or not args.no_rename:
+        if not args.title:
+            sys.exit("missing required value for rename/zip: title")
 
     return args

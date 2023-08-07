@@ -7,10 +7,14 @@ def build_archive_name(args):
     archive_name = args.title
     if args.volume:
         archive_name += f" v{args.volume.zfill(args.volume_padding)}"
-    archive_name += f" ({args.year}) (Digital)"
+    if args.year:
+        archive_name += f" ({args.year})"
+    archive_name += " (Digital)"
     if args.fix:
         archive_name += f" (F)"
-    archive_name += f" ({args.ripper}).cbz"
+    if args.ripper:
+        archive_name += f" ({args.ripper})"
+    archive_name += ".cbz"
     return archive_name
 
 
