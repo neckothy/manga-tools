@@ -11,7 +11,8 @@ See [the wiki](https://github.com/neckothy/manga-tools/wiki) for requirements, w
 
 Some related sources which may have helped with or inspired portions of this repo:
 
+- Madokami Naming Scheme
+- [DrWhoCares/imgdanke](https://github.com/DrWhoCares/imgdanke)
 - [JodanJodan/MangaToolsnke](https://github.com/JodanJodan/MangaToolsnke)
 - [noaione/nao-manga-rls](https://github.com/noaione/nao-manga-rls)
-- Madokami Naming Scheme
 - Some of my cute manga reading friendos
